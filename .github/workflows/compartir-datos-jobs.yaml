@@ -24,7 +24,7 @@ jobs:
     - name: Test
       run: dotnet test src/wpm-api/WisdomPetMedicine.sln --no-build --verbosity normal
     - name: Publish
-      run: donet publish src/wpm-api/WisdomPetMedicine.sln --configuration Release --output publish
+      run: dotnet publish src/wpm-api/WisdomPetMedicine.sln --configuration Release --output publish
     - name: Subir datos
       uses: actions/upload-artifact@v3
       with:
