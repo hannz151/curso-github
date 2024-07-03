@@ -24,7 +24,7 @@ jobs:
     - name: Test
       run: dotnet test src/wpm-api/WisdomPetMedicine.sln --no-build --verbosity normal
     - name: Publish
-      run: dotnet publish src/wpm-api/WisdomPetMedicine.sln --configuration Release --output publish
+      run: dotnet publish src/wpm-api/WisdomPetMedicine.sln --configuration Release --output publish # se genera folder para subir los binarios
     - name: Subir datos
       uses: actions/upload-artifact@v3
       with:
@@ -35,7 +35,7 @@ jobs:
     needs: [build]
     steps:
     - name: Descargar datos
-      uses: actions-download-artifact@v3
+      uses: actions/download-artifact@v3
       with:
         path: publish
     - name: Muestra el contenido del artefacto
