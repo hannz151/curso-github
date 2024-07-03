@@ -28,4 +28,4 @@ jobs:
      runs-on: ubuntu-latest
      steps:
      - name: docker build
-       run: docker build src\wpm-api --file src\wpm-api\WisdomPetMedicine.Api\Dockerfile --tag curso-github
+       run: docker build src/wpm-api --file src/wpm-api/WisdomPetMedicine.Api/Dockerfile --tag curso-github
