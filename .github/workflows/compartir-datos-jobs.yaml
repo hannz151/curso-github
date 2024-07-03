@@ -1,4 +1,4 @@
-name: .NET con Docker
+name: Compartir datos entre jobs
 
 on:
   push:
@@ -23,11 +23,21 @@ jobs:
       run: dotnet build src/wpm-api/WisdomPetMedicine.sln --no-restore
     - name: Test
       run: dotnet test src/wpm-api/WisdomPetMedicine.sln --no-build --verbosity normal
-  docker:
-     name: Contenerización con Docker y .NET
-     runs-on: ubuntu-latest
-     needs: [build] #esta opción es para decirle al job "docker" no se ejecute hasta que el job "build se haya ejecutado"
-     steps:
-     - uses: actions/checkout@v3 #descargar código
-     - name: docker build
-       run: docker build src/wpm-api --file src/wpm-api/WisdomPetMedicine.Api/Dockerfile --tag curso-github
+    - name: Publish
+      run: donet publish src/wpm-api/WisdomPetMedicine.sln --configuration Release --output publish
+    - name: Subir datos
+      uses: actions/upload-artifact@v3
+      with:
+        path: publish
+  storage:
+    name: Almacenamiento
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+    - name: Descargar datos
+      uses: actions-download-artifact@v3
+      with:
+        path: publish
+    - name: Muestra el contenido del artefacto
+      shell: bash
+      run: ls publish -R
