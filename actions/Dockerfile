@@ -5,6 +5,6 @@ ca-certificates \
 curl \
 jq
 
-COPY entrypoint.sh /entrupoint.sh
+COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
