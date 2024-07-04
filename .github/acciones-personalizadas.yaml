@@ -1,4 +1,4 @@
-name: Acciones personalizadas
+name: accions
 
 on:
   workflow_dispatch:
