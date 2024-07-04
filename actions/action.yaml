@@ -4,7 +4,7 @@ inputs:
   person_id:
     description: 'Id del personaje'
     required: true
-    default: 1
+    default: '1'
 outputs:
   person_name:
     description: 'Nombre del personaje'
