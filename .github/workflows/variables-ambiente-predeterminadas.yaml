@@ -1,4 +1,4 @@
-name: ghcli
+name: Variables de ambiente predeterminadas
 
 on:
   workflow_dispatch:
