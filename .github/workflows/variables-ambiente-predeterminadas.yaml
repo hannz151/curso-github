@@ -5,7 +5,7 @@ on:
 
 jobs:
   show:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, windows]
     steps:
         - name: Mostrar valores de variables de ambiente
           run: echo $GITHUB_ACTION && 
