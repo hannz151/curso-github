@@ -1,0 +1,13 @@
+name: Runners hospedados - Docker
+
+on:
+  workflow_dispatch:
+
+jobs:
+  docker:
+    name: Contenerización con Docker y .net
+    runs-on: [self-hosted, windows]
+    steps:
+    - uses: actions/checkout@v3 #descargar código
+    - name: docker build
+      run: docker build src/wpm-api --file src/wpm-api/WisdomPetMedicine.Api/Dockerfile --tag curso-github
