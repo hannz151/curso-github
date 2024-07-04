@@ -2,7 +2,12 @@ name: ghcli
 
 on:
   workflow_dispatch:
-    
+    inputs:
+        tag:
+            description: Etiqueta para la imagen de docker
+            required: true
+            default: latest
+
 jobs:
   build:
 
@@ -27,4 +32,4 @@ jobs:
      steps:
      - uses: actions/checkout@v3 #descargar código
      - name: docker build
-       run: docker build src/wpm-api --file src/wpm-api/WisdomPetMedicine.Api/Dockerfile --tag curso-github
+       run: docker build src/wpm-api --file src/wpm-api/WisdomPetMedicine.Api/Dockerfile --tag curso-github:${{github.event.inputs.tag}}
