@@ -12,7 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
         SOLUTION_PATH: src/wpm-api/WisdomPetMedicine.sln
-        DOCKERFILE_PATH: src/wpm-api/WisdomPetMedicine.Api/Dockerfile
     steps:
     - uses: actions/checkout@v3
     - name: Setup .NET
@@ -28,6 +27,8 @@ jobs:
   docker:
      name: Contenerización con Docker y .NET
      runs-on: ubuntu-latest
+     env:
+        DOCKERFILE_PATH: src/wpm-api/WisdomPetMedicine.Api/Dockerfile
      needs: [build] #esta opción es para decirle al job "docker" no se ejecute hasta que el job "build se haya ejecutado"
      steps:
      - uses: actions/checkout@v3 #descargar código
