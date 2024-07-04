@@ -39,14 +39,14 @@ jobs:
             username: USUARIOINCORRECTO
             password: PASSWORDINCORRECTO
        - name: Crear un issue con el API REST
-         if: ${{failure()}}
+         if: ${{ failure() }}
          run: |
            curl --request POST \
            --url https://api.github.com/repos/${{ github.repository }}/issues \
            --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
            --header 'content-type: application/json' \
            --data '{
-           "title": "No se puede autenticar con Docker Hub",
-           "body": "Error en el workflow **${{ github.workflow }}**."
-           }' \
+             "title": "No se puede autenticar con Docker Hub",
+             "body": "Error en el workflow **${{ github.workflow }}**."
+             }' \
            --fail
